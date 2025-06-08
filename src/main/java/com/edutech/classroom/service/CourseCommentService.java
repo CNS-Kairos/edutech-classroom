@@ -27,7 +27,7 @@ public class CourseCommentService {
         return CourseCommentDTO.fromEntity(repo.save(CourseCommentDTO.toEntity(dto)));
     }
 
-    public CourseCommentDTO update(CourseCommentDTO dto, Integer id) {
+    public CourseCommentDTO update(Integer id, CourseCommentDTO dto) {
         repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id));
         CourseComment entity = dto.toEntity();
         entity.setId(id);
