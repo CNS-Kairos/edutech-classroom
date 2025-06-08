@@ -40,7 +40,7 @@ public class CourseContentDTO {
         return dto;
     }
 
-    public CourseContent fromEntity() {
+    public CourseContent toEntity() {
         CourseContent entity = new CourseContent();
         entity.setId(this.id);
         entity.setTitle(this.title);
