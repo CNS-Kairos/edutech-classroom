@@ -10,11 +10,11 @@ public class RoleDTO {
 
     private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "El nombre no puede estar vacio")
     @Size(max=50, message = "Nombre máximo de 50 caracteres")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "La descripción no puede estar vacia")
     @Size(max = 800, message = "La descripción tiene un máximo de 800 caratecteres")
     private String description;
 
