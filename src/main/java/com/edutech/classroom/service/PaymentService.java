@@ -2,6 +2,7 @@ package com.edutech.classroom.service;
 
 import com.edutech.classroom.dto.PaymentDTO;
 import com.edutech.classroom.entity.Payment;
+import com.edutech.classroom.exception.ResourceNotFoundException;
 import com.edutech.classroom.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class PaymentService {
 
     public PaymentDTO findById(Integer id){
         return PaymentDTO.fromEntity(repo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Pago no encontrado")));
+                .orElseThrow(() -> new ResourceNotFoundException("Pago no encontrado")));
     }
 
     public PaymentDTO create(PaymentDTO dto){
@@ -28,7 +29,7 @@ public class PaymentService {
     }
 
     public PaymentDTO update(Integer id, PaymentDTO dto){
-        repo.findById(id).orElseThrow(() -> new IllegalArgumentException("Pago no encontrado"));
+        repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Pago no encontrado"));
         Payment entity = dto.toEntity();
         entity.setId(id);
         return PaymentDTO.fromEntity(repo.save(entity));
@@ -36,6 +37,6 @@ public class PaymentService {
 
     public void delete(Integer id){
         repo.delete(repo.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("Pago no encontrado")));
+                () -> new ResourceNotFoundException("Pago no encontrado")));
     }
 }
