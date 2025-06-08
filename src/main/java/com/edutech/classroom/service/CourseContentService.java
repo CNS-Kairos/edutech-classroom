@@ -27,7 +27,7 @@ public class CourseContentService {
         return CourseContentDTO.fromEntity(repo.save(dto.toEntity()));
     }
 
-    public CourseContentDTO update(CourseContentDTO dto, Integer id) {
+    public CourseContentDTO update(Integer id, CourseContentDTO dto) {
         repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id));
         CourseContent entity = dto.toEntity();
         entity.setId(id);

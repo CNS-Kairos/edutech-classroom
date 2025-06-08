@@ -23,7 +23,11 @@ public class EnrollmentService {
         .orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id)));
     }
 
-    public EnrollmentDTO update(EnrollmentDTO dto, Integer id){
+    public EnrollmentDTO create(EnrollmentDTO dto){
+        return EnrollmentDTO.fromEntity(repo.save(dto.toEntity()));
+    }
+
+    public EnrollmentDTO update(Integer id, EnrollmentDTO dto){
         repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id));
         Enrollment entity = dto.toEntity();
         entity.setId(id);

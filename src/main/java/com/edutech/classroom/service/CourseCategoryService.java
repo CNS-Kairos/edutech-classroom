@@ -27,7 +27,7 @@ public class CourseCategoryService {
         return CourseCategoryDTO.fromEntity(repo.save(dto.toEntity()));
     }
 
-    public CourseCategoryDTO update(CourseCategoryDTO dto, Integer id) {
+    public CourseCategoryDTO update(Integer id, CourseCategoryDTO dto) {
         repo.findById(id).orElseThrow( () -> new EntityNotFoundException("Category with id " + id + " not found!"));
         CourseCategory entity = dto.toEntity();
         entity.setId(id);
