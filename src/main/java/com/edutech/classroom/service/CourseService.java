@@ -24,7 +24,7 @@ public class CourseService {
     }
 
     public CourseDTO create(CourseDTO dto) {
-        return  CourseDTO.fromEntity(repo.save(CourseDTO.toEntity(dto)));
+        return  CourseDTO.fromEntity(repo.save(dto.toEntity()));
     }
 
     public CourseDTO update(Integer id, CourseDTO dto) {

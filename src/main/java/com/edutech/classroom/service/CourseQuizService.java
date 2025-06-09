@@ -24,7 +24,7 @@ public class CourseQuizService {
     }
 
     public CourseQuizDTO create(CourseQuizDTO dto) {
-        return CourseQuizDTO.fromEntity(repo.save(CourseQuizDTO.toEntity(dto)));
+        return CourseQuizDTO.fromEntity(repo.save(dto.toEntity()));
     }
 
     public CourseQuizDTO update(Integer id, CourseQuizDTO dto) {
