@@ -42,9 +42,7 @@ public class PaymentDTO {
     public static PaymentDTO fromEntity(Payment entity) {
         PaymentDTO dto = new PaymentDTO();
         dto.setId(entity.getId());
-
         dto.setUserId(entity.getUser().getId());
-
         dto.setAmount(entity.getAmount());
         dto.setPaymentDate(entity.getPaymentDate());
         dto.setPaymentMethod(entity.getPaymentMethod());
@@ -66,6 +64,7 @@ public class PaymentDTO {
         entity.setPaymentDate(this.getPaymentDate());
         entity.setPaymentMethod(this.getPaymentMethod());
         entity.setPaymentInstitution(this.getPaymentInstitution());
+        entity.setTransactionId(this.getTransactionId());
         entity.setStatus(this.getStatus());
         return entity;
     }
