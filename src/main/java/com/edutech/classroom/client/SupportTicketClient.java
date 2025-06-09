@@ -4,8 +4,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "ms-student-mark", url = "https://localhost:8080/api/student-marks")
-public interface StudentMarkClient {
+@FeignClient(name = "ms-support-ticket", url = "https://localhost:8080/api/support-tickets")
+public interface SupportTicketClient {
     @GetMapping("/{id}")
-    Object getStudentMarkById(@PathVariable("id") String id);
+    Object getSupportTicketById(@PathVariable("id") String id);
 }
