@@ -32,9 +32,10 @@ public class RoleController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RoleDTO> update(@RequestBody Integer id, @Valid @RequestBody RoleDTO dto){
-        return ResponseEntity.ok(service.update(id,dto));
+    public ResponseEntity<RoleDTO> update(@PathVariable Integer id, @Valid @RequestBody RoleDTO dto) {
+        return ResponseEntity.ok(service.update(id, dto));
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
