@@ -14,7 +14,7 @@ import java.time.Instant;
 public class PaymentDTO {
     private Integer id;
 
-    @NotBlank(message = "El id del usuario no puede estar vacio")
+    @NotNull(message = "El id del usuario no puede estar vacio")
     private Integer userId;
 
     @NotNull
