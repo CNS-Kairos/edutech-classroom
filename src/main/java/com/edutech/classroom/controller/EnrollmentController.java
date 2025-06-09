@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/enrollment")
+@RequestMapping("api/enrollments")
 @RequiredArgsConstructor
 public class EnrollmentController {
     private final EnrollmentService service;
