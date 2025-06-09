@@ -30,7 +30,7 @@ public class CourseQuizQuestionController {
         return ResponseEntity.ok(service.create(dto));
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<CourseQuizQuestionDTO> update(@PathVariable Integer id, @RequestBody @Valid CourseQuizQuestionDTO dto) {
         return ResponseEntity.ok(service.update(id, dto));
     }
