@@ -1,6 +1,8 @@
 package com.edutech.classroom.dto;
 
+import com.edutech.classroom.entity.Course;
 import com.edutech.classroom.entity.Enrollment;
+import com.edutech.classroom.entity.User;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -37,8 +39,15 @@ public class EnrollmentDTO {
     public Enrollment toEntity() {
         Enrollment entity = new Enrollment();
         entity.setId(this.getId());
-        entity.setStudentId(this.getStudentId());
-        entity.setCourseId(this.getCourseId());
+
+        User student = new User();
+        student.setId(this.getStudentId());
+        entity.setStudent(student);
+
+        Course course = new Course();
+        course.setId(this.getCourseId());
+        entity.setCourse(course);
+
         entity.setEnrolledAt(this.getEnrolledAt());
         entity.setStatus(this.getStatus());
         return entity;
