@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 import com.edutech.classroom.entity.Course;
 
+import com.edutech.classroom.entity.CourseCategory;
+import com.edutech.classroom.entity.User;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -66,9 +68,19 @@ public class CourseDTO {
         entity.setId(this.getId());
         entity.setTitle(this.getTitle());
         entity.setDescription(this.getDescription());
-        entity.setCategoryId(this.getCategoryId());
-        entity.setManagerId(this.getManagerId());
-        entity.setInstructorId(this.getInstructorId());
+
+        CourseCategory category = new CourseCategory();
+        category.setId(this.getCategoryId());
+        entity.setCategory(category);
+
+        User manager = new User();
+        manager.setId(this.getManagerId());
+        entity.setManager(manager);
+
+        User instructor = new User();
+        instructor.setId(this.getInstructorId());
+        entity.setInstructor(instructor);
+
         entity.setPublishDate(this.getPublishDate());
         entity.setPrice(this.getPrice());
         entity.setImage(this.getImage());
