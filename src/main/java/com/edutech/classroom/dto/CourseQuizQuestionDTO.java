@@ -1,5 +1,6 @@
 package com.edutech.classroom.dto;
 
+import com.edutech.classroom.entity.CourseQuiz;
 import com.edutech.classroom.entity.CourseQuizQuestion;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -64,7 +65,11 @@ public class CourseQuizQuestionDTO {
     public CourseQuizQuestion toEntity() {
         CourseQuizQuestion entity = new CourseQuizQuestion();
         entity.setId(this.getId());
-        entity.setQuizId(this.getQuizId());
+
+        CourseQuiz courseQuiz = new CourseQuiz();
+        courseQuiz.setId(this.getQuizId());
+        entity.setQuiz(courseQuiz);
+
         entity.setQuestionText(this.getQuestionText());
         entity.setOptionA(this.getOptionA());
         entity.setOptionB(this.getOptionB());
