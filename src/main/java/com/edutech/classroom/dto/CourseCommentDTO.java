@@ -1,6 +1,8 @@
 package com.edutech.classroom.dto;
 
+import com.edutech.classroom.entity.Course;
 import com.edutech.classroom.entity.CourseComment;
+import com.edutech.classroom.entity.User;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -31,8 +33,8 @@ public class CourseCommentDTO {
     public static CourseCommentDTO fromEntity(CourseComment entity) {
         CourseCommentDTO dto = new CourseCommentDTO();
         dto.setId(entity.getId());
-        dto.setCourseId(entity.getCourseId());
-        dto.setUserId(entity.getUserId());
+        dto.setCourseId(entity.getCourse().getId());
+        dto.setUserId(entity.getUser().getId());
         dto.setCommentText(entity.getCommentText());
         dto.setRating(entity.getRating());
         dto.setCreatedAt(entity.getCreatedAt());
@@ -42,8 +44,15 @@ public class CourseCommentDTO {
     public CourseComment toEntity() {
         CourseComment entity = new CourseComment();
         entity.setId(this.id);
-        entity.setCourseId(this.getCourseId());
-        entity.setUserId(this.getUserId());
+
+        Course course = new Course();
+        course.setId(this.courseId);
+        entity.setCourse(course);
+
+        User user = new User();
+        user.setId(this.userId);
+        entity.setUser(user);
+
         entity.setCommentText(this.getCommentText());
         entity.setRating(this.getRating());
         entity.setCreatedAt(this.getCreatedAt());

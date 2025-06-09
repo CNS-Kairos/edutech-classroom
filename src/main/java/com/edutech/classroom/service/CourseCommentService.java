@@ -24,7 +24,7 @@ public class CourseCommentService {
     }
 
     public CourseCommentDTO create(CourseCommentDTO dto) {
-        return CourseCommentDTO.fromEntity(repo.save(CourseCommentDTO.toEntity(dto)));
+        return CourseCommentDTO.fromEntity(repo.save(dto.toEntity()));
     }
 
     public CourseCommentDTO update(Integer id, CourseCommentDTO dto) {
