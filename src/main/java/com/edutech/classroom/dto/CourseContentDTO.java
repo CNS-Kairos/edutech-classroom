@@ -1,5 +1,6 @@
 package com.edutech.classroom.dto;
 
+import com.edutech.classroom.entity.Course;
 import com.edutech.classroom.entity.CourseContent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -42,6 +43,11 @@ public class CourseContentDTO {
     public CourseContent toEntity() {
         CourseContent entity = new CourseContent();
         entity.setId(this.id);
+
+        Course course = new Course();
+        course.setId(this.getCourseId());
+        entity.setCourse(course);
+
         entity.setTitle(this.title);
         entity.setContentType(this.contentType);
         entity.setUrl(this.url);
